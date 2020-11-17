@@ -1,17 +1,20 @@
 import './App.css';
+import {useState} from 'react'
 import Person from './Person/Person'
 
 function App() {
-  const state = {
-    persons: [
-      {name: 'Max', age: 28},
-      {name: 'Manu', age: 29},
-      {name: 'Stephanie', age: 26}
-    ]
-  }
+  const [persons, setPersons] = useState([
+    {name: 'Max', age: 28},
+    {name: 'Manu', age: 29},
+    {name: 'Stephanie', age: 26}
+  ])
 
   const switchNameHandler = () => {
-    console.log('Was clicked!')
+    setPersons([
+    {name: 'Maximilian', age: 28},
+    {name: 'Manu', age: 29},
+    {name: 'Stephanie', age: 27}
+  ])
   }
 
   return (
@@ -19,9 +22,9 @@ function App() {
       <h1>Hi, I am react app</h1>
       <p>This is really working!</p>
       <button onClick={switchNameHandler}>Switch name</button>
-      <Person name={state.persons[0].name} age={state.persons[0].age}/>
-      <Person name={state.persons[1].name} age={state.persons[1].age}>My hobbies: Racing</Person>
-      <Person name={state.persons[2].name} age={state.persons[2].age}/>
+      <Person name={persons[0].name} age={persons[0].age}/>
+      <Person name={persons[1].name} age={persons[1].age}>My hobbies: Racing</Person>
+      <Person name={persons[2].name} age={persons[2].age}/>
     </div>
   );
 }
