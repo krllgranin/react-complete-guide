@@ -17,6 +17,14 @@ function App() {
     ])
   }
 
+  const nameChangedHandler = (event) => {
+    setPersons([
+      {name: 'Max', age: 28},
+      {name: event.target.value, age: 29},
+      {name: 'Stephanie', age: 26}
+    ])
+  }
+
   return (
     <div className="App">
       <h1>Hi, I am react app</h1>
@@ -28,7 +36,8 @@ function App() {
       <Person
         name={persons[1].name}
         age={persons[1].age}
-        click={switchNameHandler.bind(this, 'Max!!')}>My hobbies: Racing</Person>
+        click={switchNameHandler.bind(this, 'Max!!')}
+        change={nameChangedHandler}>My hobbies: Racing</Person>
       <Person
         name={persons[2].name}
         age={persons[2].age}/>
