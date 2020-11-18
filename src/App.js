@@ -9,22 +9,29 @@ function App() {
     {name: 'Stephanie', age: 26}
   ])
 
-  const switchNameHandler = () => {
+  const switchNameHandler = (newName) => {
     setPersons([
-    {name: 'Maximilian', age: 28},
-    {name: 'Manu', age: 29},
-    {name: 'Stephanie', age: 27}
-  ])
+      {name: newName, age: 28},
+      {name: 'Manu', age: 29},
+      {name: 'Stephanie', age: 27}
+    ])
   }
 
   return (
     <div className="App">
       <h1>Hi, I am react app</h1>
       <p>This is really working!</p>
-      <button onClick={switchNameHandler}>Switch name</button>
-      <Person name={persons[0].name} age={persons[0].age}/>
-      <Person name={persons[1].name} age={persons[1].age}>My hobbies: Racing</Person>
-      <Person name={persons[2].name} age={persons[2].age}/>
+      <button onClick={() => switchNameHandler('Maximilian')}>Switch name</button>
+      <Person
+        name={persons[0].name}
+        age={persons[0].age}/>
+      <Person
+        name={persons[1].name}
+        age={persons[1].age}
+        click={switchNameHandler.bind(this, 'Max!!')}>My hobbies: Racing</Person>
+      <Person
+        name={persons[2].name}
+        age={persons[2].age}/>
     </div>
   );
 }
