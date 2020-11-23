@@ -1,15 +1,19 @@
 import './App.css';
 import {useState} from 'react'
 import Person from './Person/Person'
+import UserInput from './UserInput/UserInput'
+import UserOutput from './UserOutput/UserOutput'
+
 
 function App() {
+  const [username, setUserName] = useState('Kirill')
   const [persons, setPersons] = useState([
     {name: 'Max', age: 28},
     {name: 'Manu', age: 29},
     {name: 'Stephanie', age: 26}
   ])
 
-  const switchNameHandler = (newName) => {
+  const switchNameHandler = newName => {
     setPersons([
       {name: newName, age: 28},
       {name: 'Manu', age: 29},
@@ -17,12 +21,16 @@ function App() {
     ])
   }
 
-  const nameChangedHandler = (event) => {
+  const nameChangedHandler = event => {
     setPersons([
       {name: 'Max', age: 28},
       {name: event.target.value, age: 29},
       {name: 'Stephanie', age: 26}
     ])
+  }
+
+  const changeUserInputHandler = event => {
+    setUserName(event.target.value)
   }
 
   const buttonStyle = {
@@ -52,6 +60,9 @@ function App() {
       <Person
         name={persons[2].name}
         age={persons[2].age}/>
+      <UserInput username={username} change={changeUserInputHandler}/>
+      <UserOutput username={username}/>
+      <UserOutput username={'Irina'}>Test text</UserOutput>
     </div>
   );
 }
